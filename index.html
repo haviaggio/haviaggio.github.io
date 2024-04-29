@@ -5,42 +5,56 @@
   <title>My GitHub Page</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" type="text/javascript"></script>
   <script src="https://unpkg.com/mappa-mundi/dist/mappa.min.js" type="text/javascript"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <h1>Hi there!</h1>
   <p>Welcome to my GitHub Pages site.</p>
 
   <script>
+    let myMap;
+    let canvas;
+    const mappa = new Mappa('Leaflet');
+    const options = {
+      lat: 0, // Set latitude for the center of the map
+      lng: 0, // Set longitude for the center of the map
+      zoom: 4,
+      style: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    }
 
+    function setup() {
+      canvas = createCanvas(640, 640);
+      // Move the canvas so it's inside our <body>.
+      canvas.parent('canvasContainer');
+      
+      myMap = mappa.tileMap(options); 
+      myMap.overlay(canvas);
 
-  let myMap;
-let canvas;
-const mappa = new Mappa('Leaflet');
-const options = {
-  lat: 0,
-  lng: 0,
-  zoom: 4,
-  style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-}
+      // Additional setup like custom fill color can go here
+      fill(200, 100, 100);
+    }
 
-function setup(){
-  canvas = createCanvas(640,640);
-  myMap = mappa.tileMap(options); 
-  myMap.overlay(canvas) 
+    function draw() {
+      // Clear the canvas
+      clear();
+      
+      // Perform any drawing relative to the map's current state here
+      drawPoint();
+    }
 
-  fill(200, 100, 100);
-  
-  // Only redraw the point when the map changes and not every frame.
-  myMap.onChange(drawPoint);
-}
-
-function draw(){
-}
-
-function drawPoint(){
-  clear();
-
-  const nigeria = myMap.latLngToPixel(11.396396, 5.076543); 
-  ellipse(nigeria.x, nigeria.y, 20, 20);
-}
-
+    function drawPoint() {
+      // Draw a point on the map at the given latitude and longitude
+      const nigeria = myMap.latLngToPixel(11.396396, 5.076543);
+      ellipse(nigeria.x, nigeria.y, 20, 20);
+    }
+  </script>
+</body>
+</html>
