@@ -40,27 +40,37 @@ function draw(){
 }
 
 // Draw the meteorites
-function drawMeteorites() {
-  // Clear the canvas
-  clear();
-
-  for (let i = 0; i < meteorites.getRowCount(); i++) {
-    // Get the lat/lng of each meteorite 
+for (let i = 0; i < meteorites.getRowCount(); i++) {
     const latitude = Number(meteorites.getString(i, 'reclat'));
     const longitude = Number(meteorites.getString(i, 'reclong'));
 
-    // Only draw them if the position is inside the current map bounds. We use a
-    // Leaflet method to check if the lat and lng are contain inside the current
-    // map. This way we draw just what we are going to see and not everything. See
-    // getBounds() in http://leafletjs.com/reference-1.1.0.html
     if (myMap.map.getBounds().contains({lat: latitude, lng: longitude})) {
-      // Transform lat/lng to pixel position
       const pos = myMap.latLngToPixel(latitude, longitude);
-      // Get the size of the meteorite and map it. 60000000 is the mass of the largest
-      // meteorite (https://en.wikipedia.org/wiki/Hoba_meteorite)
-      let size = meteorites.getString(i, 'mass (g)');
-      size = map(size, 558, 60000000, 1, 25) + myMap.zoom();
+      let mass = Number(meteorites.getString(i, 'mass (g)'));
+      let size = map(mass, 558, 60000000, 1, 25) + myMap.zoom();
+
+      // Color based on mass: more massive meteorites are darker
+      let colorValue = map(mass, 558, 60000000, 255, 50);
+      fill(colorValue);
+
+      // Draw an ellipse with dynamic stroke weight
+      strokeWeight(map(mass, 558, 60000000, 0.5, 3));
+      stroke(150, 100, colorValue); // Greyscale with a touch of opacity
       ellipse(pos.x, pos.y, size, size);
+
+      // Optional: Add rotation for visual effect
+      push();
+      translate(pos.x, pos.y);
+      rotate(radians(frameCount % 360));
+      let points = int(map(mass, 558, 60000000, 5, 12)); // Sides based on mass
+      beginShape();
+      for (let a = 0; a < TWO_PI; a += TWO_PI / points) {
+        let x = cos(a) * size;
+        let y = sin(a) * size;
+        vertex(x, y);
+      }
+      endShape(CLOSE);
+      pop();
     }
   }
 }
