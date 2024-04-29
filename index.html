@@ -9,6 +9,8 @@
   <style type="text/css">
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000}
     p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
     span.s1 {font-kerning: none}
   </style>
 </head>
@@ -86,5 +88,56 @@
 <p class="p1"><span class="s1">function draw(){</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">let myMap;</span></p>
+<p class="p1"><span class="s1">let canvas;</span></p>
+<p class="p1"><span class="s1">const mappa = new Mappa('Leaflet');</span></p>
+<p class="p1"><span class="s1">const options = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>lat: 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>lng: 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>zoom: 4,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function setup(){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>canvas = createCanvas(640,640);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>myMap = mappa.tileMap(options);<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>myMap.overlay(canvas)<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>fill(200, 100, 100);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Only redraw the point when the map changes and not every frame.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>myMap.onChange(drawPoint);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function draw(){</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function drawPoint(){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>clear();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const nigeria = myMap.latLngToPixel(11.396396, 5.076543);<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>ellipse(nigeria.x, nigeria.y, 20, 20);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p3"><span class="s1">Move and zoom in/out:</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
 </body>
 </html>
