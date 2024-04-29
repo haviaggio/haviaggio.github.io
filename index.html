@@ -1,44 +1,17 @@
-// Create a variable to hold our map and canvas
-let myMap;
-let canvas;
-
-// Create a new Mappa instance using Leaflet
-const mappa = new Mappa('Leaflet');
-
-// p5.js setup function
-function setup() {
-  // Create a canvas 640x640
-  canvas = createCanvas(640, 640);
-
-  // Add a grey background
-  background(100);
-
-  // Create a tile map with the options
-  const options = {
-    lat: 0,
-    lng: 0,
-    zoom: 4,
-    style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-  };
-
-  // Create a tile map with options
-  myMap = mappa.tileMap(options);
-  myMap.overlay(canvas);
-}
-
-// p5.js draw function
-function draw() {
-  // Clear the canvas
-  clear();
-
-  const nigeria = myMap.latLngToPixel(11.396396, 5.076543);
-  // Draw an ellipse at the pixel position
-  ellipse(nigeria.x, nigeria.y, 20, 20);
-}
-
-// Only redraw the point when the map changes and not every frame.
-function drawPoint() {
-  clear();
-  const nigeria = myMap.latLngToPixel(11.396396, 5.076543);
-  ellipse(nigeria.x, nigeria.y, 20, 20);
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">// Create a variable to hold our map and canvas let myMap; let canvas; // Create a new Mappa instance using Leaflet const mappa = new Mappa('Leaflet'); // p5.js setup function function setup() { // Create a canvas 640x640 canvas = createCanvas(640, 640); // Add a grey background background(100); // Create a tile map with the options const options = { lat: 0, lng: 0, zoom: 4, style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png" }; // Create a tile map with options myMap = mappa.tileMap(options); myMap.overlay(canvas); } // p5.js draw function function draw() { // Clear the canvas clear(); const nigeria = myMap.latLngToPixel(11.396396, 5.076543); // Draw an ellipse at the pixel position ellipse(nigeria.x, nigeria.y, 20, 20); } // Only redraw the point when the map changes and not every frame. function drawPoint() { clear(); const nigeria = myMap.latLngToPixel(11.396396, 5.076543); ellipse(nigeria.x, nigeria.y, 20, 20); }<span class="Apple-converted-space"> </span></span></p>
+</body>
+</html>
