@@ -30,6 +30,24 @@ function draw(){
 
 }
 
+let myMap;
+let canvas;
+const mappa = new Mappa('Leaflet');
+
+function setup(){
+  canvas = createCanvas(640,640); 
+  background(100);
+
+  // Create a tile map with lat 0, lng 0, zoom 4
+  myMap = mappa.tileMap(0,0,4); 
+  // Overlay the canvas over the tile map
+  myMap.overlay(canvas);
+}
+
+function draw(){
+
+}
+
   </script>
 </body>
 
