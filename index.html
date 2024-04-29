@@ -9,22 +9,27 @@
 
 <body>
   <script>
-// Create a variable to hold our map
 let myMap;
-// Create a variable to hold our canvas
 let canvas;
-// Create a new Mappa instance using Leaflet.
 const mappa = new Mappa('Leaflet');
 
-// p5.js setup
-function setup(){
-  // Create a canvas 640x640
-  canvas = createCanvas(640,640); 
-  // Add a grey background
-  background(100);
+// Lets put all our map options in a single object
+const options = {
+  lat: 0,
+  lng: 0,
+  zoom: 4,
+  style: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
 }
 
-// p5.js draw
+function setup(){
+  canvas = createCanvas(640,640); 
+  // background(100); let's uncomment this, we don't need it for now
+
+  // Create a tile map with the options declared
+  myMap = mappa.tileMap(options); 
+  myMap.overlay(canvas);
+}
+
 function draw(){
 
 }
